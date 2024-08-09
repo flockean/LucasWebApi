@@ -12,13 +12,14 @@ const (
     port = 5432
     user = "postgres"
     password = "lucas"
-    dbname = "lucasdb"
+    dbname = "postgres"
 )
 
 func Dbconf() {
     // TODO: password needs to be... well not visible
-    psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+    psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
     db, err := sql.Open("postgres", psqlInfo)
+    fmt.Println(psqlInfo)
 
     if err != nil {
         panic(err)
