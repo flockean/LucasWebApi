@@ -11,6 +11,7 @@ import (
     "github.com/gin-contrib/static"
 )
 
+
 func NewRouter() *gin.Engine {
         // Set the router as the default one shipped with Gin
         router := gin.Default()
