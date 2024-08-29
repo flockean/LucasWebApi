@@ -8,7 +8,6 @@ type Project struct{
     project_id  int8
     name        string
     description string
-    services    []Service
 }
 
 type Service struct{
@@ -16,5 +15,6 @@ type Service struct{
     name        string
     lang        string
     focus       string
+    project     int
 }
 

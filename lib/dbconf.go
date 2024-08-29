@@ -10,7 +10,7 @@ import (
 
 // TODO: Put creds in environment
 const (
-    host = "localhost"
+    host = "0.0.0.0"
     port = 5432
     user = "postgres"
     password = "lucas"
@@ -54,7 +54,7 @@ func Dbconf() (*DB, error) {
 }
 
 func getAllProjects(db *DB) ([]Project, error) {
-    rows, err := db.Query("SELECT * FROM %s")
+    rows, err := db.Query("SELECT * FROM project")
     if err != nil {
         log.Panicf("Error on query %s", err)
     }
@@ -64,7 +64,7 @@ func getAllProjects(db *DB) ([]Project, error) {
     for rows.Next() {
         var project Project
 
-        err := rows.Scan(&project.project_id, &project.name, &project.description, &project.services);
+        err := rows.Scan(&project.project_id, &project.name, &project.description);
         projects = append(projects, project)
             return nil, err
 
