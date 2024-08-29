@@ -1,13 +1,11 @@
-FROM golang:1.19
+FROM golang:1.23
 
 WORKDIR /app
 
-COPY go.mod go.sum ./
+COPY . ./
 
 RUN go mod download
 
-COPY *.go ./lib ./
+RUN go build
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /startApi
-
-CMD [ "/startApi" ]
+CMD [ "./hello" ]
