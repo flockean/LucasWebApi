@@ -42,14 +42,38 @@ func NewRouter() *gin.Engine {
 
         // Setup route group for the API
         api := router.Group("/api")
+        projets := api.Group("/projects")
+        services := api.Group("/services")
         {
         apiHandler := func(c *gin.Context) {
             c.JSON(http.StatusOK, gin.H{
                 "message": "Uniform API",
             })
         }
+
+    projectHandler := func(c *gin.Context) {
+        c.JSON(http.StatusOK, gin.H{
+            "project_id": "1",
+            "name": "Example",
+            "description": "ExampleDescription",
+        })
+    }
+
+
+    serviceHandler := func(c *gin.Context) {
+        c.JSON(http.StatusOK, gin.H{
+            "service_id": "1",
+            "name": "Example",
+            "description": "ExampleDescription",
+        })
+    }
+
+
         api.GET("", apiHandler)
         api.GET("/", apiHandler)
+        projets.GET("", projectHandler)
+        services.GET("", serviceHandler)
+
     }
         return router
 }
