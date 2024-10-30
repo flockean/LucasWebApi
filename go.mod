@@ -1,4 +1,4 @@
-module LucasApi/hello
+module LucasApi/api
 
 go 1.22.6
 
